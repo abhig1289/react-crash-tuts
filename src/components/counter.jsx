@@ -25,12 +25,16 @@ class Counter extends Component {
   //     </ul>
   //   );
   // }
-  handleIncrement = () => {
+  handleIncrement = (product) => {
     // console.log("Increment clicked", this);
+    console.log(product);
     this.setState({ count: this.state.count + 1 });
   };
   // handleIncrement(){
   //   console.log("Increment clicked", this);
+  // }
+  // doHandleIncrement=()=>{
+  //   this.handleIncrement({id:1})
   // }
   render() {
     // let classes = "badge m-2 badge-";
@@ -47,7 +51,9 @@ class Counter extends Component {
         {/* <span  style={{fontSize:30}} className='badge badge-primary m-2'>{this.formatCount()}</span> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          // onClick={this.handleIncrement}
+          // onClick={this.doHandleIncrement}
+          onClick={() => this.handleIncrement(product)}
           className="badge badge-secondary m-2"
         >
           Increment
