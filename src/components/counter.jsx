@@ -2,9 +2,10 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
+    // count: this.props.value
+    value: this.props.value
     // imageUrl: "https://picsum.photos/200"
-    tags: ["tag1", "tag2", "tag3"]
+    // tags: ["tag1", "tag2", "tag3"]
   };
   // constructor() {
   //   super();
@@ -25,10 +26,10 @@ class Counter extends Component {
   //     </ul>
   //   );
   // }
-  handleIncrement = (product) => {
+  handleIncrement = () => {
     // console.log("Increment clicked", this);
-    console.log(product);
-    this.setState({ count: this.state.count + 1 });
+    // console.log(product);
+    this.setState({ value: this.state.value + 1 });
   };
   // handleIncrement(){
   //   console.log("Increment clicked", this);
@@ -37,11 +38,12 @@ class Counter extends Component {
   //   this.handleIncrement({id:1})
   // }
   render() {
+    // console.log("props", this.props);
     // let classes = "badge m-2 badge-";
     // classes += this.state.count === 0 ? "warning" : "primary";
 
     return (
-      <React.Fragment>
+      <div>
         {/* {this.state.tags.length === 0 && "Please create new tag"}
         {this.renderTags()} */}
         {/* <h1>Welcome to the world of PUSPAAA!!!</h1> */}
@@ -51,9 +53,9 @@ class Counter extends Component {
         {/* <span  style={{fontSize:30}} className='badge badge-primary m-2'>{this.formatCount()}</span> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          // onClick={this.handleIncrement}
+          onClick={this.handleIncrement}
           // onClick={this.doHandleIncrement}
-          onClick={() => this.handleIncrement(product)}
+          // onClick={() => this.handleIncrement({ id: 1 })}
           className="badge badge-secondary m-2"
         >
           Increment
@@ -63,19 +65,21 @@ class Counter extends Component {
             <li key={tag}>{tag}</li>
           ))}
         </ul> */}
-      </React.Fragment>
+      </div>
     );
   }
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.state.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { count } = this.state;
+    const { value } = this.state;
     // return count === 0 ? <h1>Zero</h1> : count;
-    return count === 0 ? "Zero" : count;
+    return value === 0 ? "Zero" : value;
   }
 }
 export default Counter;
+
+// changed count to value for passing data to components
