@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = {
-    // count: this.props.value
-    value: this.props.counter.value
-    // imageUrl: "https://picsum.photos/200"
-    // tags: ["tag1", "tag2", "tag3"]
-  };
+  // state = {
+  //   // count: this.props.value
+  //   value: this.props.counter.value
+  //   // imageUrl: "https://picsum.photos/200"
+  //   // tags: ["tag1", "tag2", "tag3"]
+  // };
   // constructor() {
   //   super();
   //   // console.log("Constructor", this);
@@ -26,11 +26,11 @@ class Counter extends Component {
   //     </ul>
   //   );
   // }
-  handleIncrement = () => {
-    // console.log("Increment clicked", this);
-    // console.log(product);
-    this.setState({ value: this.state.value + 1 });
-  };
+  // handleIncrement = () => {
+  //   // console.log("Increment clicked", this);
+  //   // console.log(product);
+  //   this.setState({ value: this.state.value + 1 });
+  // };
   // handleIncrement(){
   //   console.log("Increment clicked", this);
   // }
@@ -55,7 +55,8 @@ class Counter extends Component {
         {/* <span  style={{fontSize:30}} className='badge badge-primary m-2'>{this.formatCount()}</span> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          // onClick={this.handleIncrement}
+          onClick={() => this.props.onIncrement(this.props.counter)}
           // onClick={this.doHandleIncrement}
           // onClick={() => this.handleIncrement({ id: 1 })}
           className="badge badge-secondary m-2"
@@ -64,7 +65,7 @@ class Counter extends Component {
         </button>
         <button
           // onClick={() => this.props.onDelete(this.props.id)}
-          onClick={() => this.props.onDelete(this.pros.counter.id)}
+          onClick={() => this.props.onDelete(this.props.counter.id)}
           // onClick={this.doHandleIncrement}
           // onClick={() => this.handleIncrement({ id: 1 })}
           className="btn btn-danger btn-sm m-2"
@@ -81,12 +82,12 @@ class Counter extends Component {
   }
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.value === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { value } = this.state;
+    const { value } = this.props.counter;
     // return count === 0 ? <h1>Zero</h1> : count;
     return value === 0 ? "Zero" : value;
   }
