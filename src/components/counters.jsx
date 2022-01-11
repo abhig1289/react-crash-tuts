@@ -9,6 +9,11 @@ class Counters extends Component {
       { id: 4, value: 0 }
     ]
   };
+  handleDelete = (counterId) => {
+    const counters = this.state.counters.filter((c) => c.id !== counterId);
+    // console.log("Event Handle Called", counterId);
+    this.setState({ counters });
+  };
   render() {
     return (
       <div>
@@ -16,8 +21,21 @@ class Counters extends Component {
         <Counter />,
         <Counter />,
         <Counter /> */}
+        {/* {this.state.counters.map((counter) => (
+          <Counter
+            key={counter.id}
+            onDelete={this.handleDelete}
+            value={counter.value}
+            id={counter.id}
+          > */}
         {this.state.counters.map((counter) => (
-          <Counter key={counter.id} value={counter.value} />
+          <Counter
+            key={counter.id}
+            onDelete={this.handleDelete}
+            counter={counter}
+          >
+            <h4>Counter #{counter.id}</h4>
+          </Counter>
         ))}
       </div>
     );
